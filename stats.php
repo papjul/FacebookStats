@@ -58,12 +58,13 @@ $sexPercent = array('male' => 0, 'female' => 0, 'alien' => 0);
 
                 ++$i;
 
-                if(intval($profile['friend_count']) != 0) $percentMutual = round(($profile['mutual_friend_count'] / $profile['friend_count']) * 100, 2);
-                echo '<tr>
+                $percentMutual = (intval($profile['friend_count']) != 0) ? round(($profile['mutual_friend_count'] / $profile['friend_count']) * 100, 2) : 0;
+
+                echo '<tr'.(($percentMutual > 15) ? ' style="background-color: #FFFAAA;"' : '').'>
                     <td class="number">'.$i.'</td>
                     <td class="pic_square"><a href="'.$profile['profile_url'].'"><img src="'.$profile['pic_square'].'" alt="" /></a></td>
                     <td class="name"><a href="'.$profile['profile_url'].'">'.$profile['name'].'</a></td>
-                    <td class="friends">'.$profile['mutual_friend_count'].' / '.((intval($profile['friend_count']) != 0) ? $profile['friend_count'].'<br />('.$percentMutual.' %)' : '—').'</td>
+                    <td class="friends">'.$profile['mutual_friend_count'].' / '.((intval($profile['friend_count']) != 0) ? $profile['friend_count'].'<br />('.$percentMutual.'%)' : '—').'</td>
                     <td class="wall">'.((intval($profile['wall_count']) != 0) ? $profile['wall_count'] : '—').'</td>
                 </tr>';
                 if($profile['sex'] == 'male') ++$sex['male'];
@@ -85,9 +86,9 @@ $sexPercent = array('male' => 0, 'female' => 0, 'alien' => 0);
             <tbody>
                 <tr>
                     <?php
-                    echo '<td>'.$sex['male'].' ('.$sexPercent['male'].' %) male</td>
-                    <td>'.$sex['female'].' ('.$sexPercent['female'].' %) female</td>
-                    <td>'.$sex['alien'].' ('.$sexPercent['alien'].' %) not specified</td>';
+                    echo '<td>'.$sex['male'].' ('.$sexPercent['male'].'%) male</td>
+                    <td>'.$sex['female'].' ('.$sexPercent['female'].'%) female</td>
+                    <td>'.$sex['alien'].' ('.$sexPercent['alien'].'%) not specified</td>';
                     ?>
                 </tr>
             </tbody>
