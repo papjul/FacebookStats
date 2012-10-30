@@ -61,11 +61,11 @@ $sexPercent = array('male' => 0, 'female' => 0, 'alien' => 0);
                 $percentMutual = (intval($profile['friend_count']) != 0) ? round(($profile['mutual_friend_count'] / $profile['friend_count']) * 100, 2) : 0;
 
                 echo '<tr'.(($percentMutual > 15) ? ' style="background-color: #FFFAAA;"' : '').'>
-                    <td class="number">'.$i.'</td>
-                    <td class="pic_square"><a href="'.$profile['profile_url'].'"><img src="'.$profile['pic_square'].'" alt="" /></a></td>
+                    <td class="number centre">'.$i.'</td>
+                    <td class="pic_square centre"><a href="'.$profile['profile_url'].'"><img src="'.$profile['pic_square'].'" alt="" /></a></td>
                     <td class="name"><a href="'.$profile['profile_url'].'">'.$profile['name'].'</a></td>
-                    <td class="friends">'.$profile['mutual_friend_count'].' / '.((intval($profile['friend_count']) != 0) ? $profile['friend_count'].'<br />('.$percentMutual.'%)' : '—').'</td>
-                    <td class="wall">'.((intval($profile['wall_count']) != 0) ? $profile['wall_count'] : '—').'</td>
+                    <td class="friends centre">'.$profile['mutual_friend_count'].' / '.((intval($profile['friend_count']) != 0) ? $profile['friend_count'].'<br />('.$percentMutual.'%)' : '—').'</td>
+                    <td class="wall centre">'.((intval($profile['wall_count']) != 0) ? $profile['wall_count'] : '—').'</td>
                 </tr>';
                 if($profile['sex'] == 'male') ++$sex['male'];
                 else if($profile['sex'] == 'female') ++$sex['female'];
@@ -93,5 +93,9 @@ $sexPercent = array('male' => 0, 'female' => 0, 'alien' => 0);
                 </tr>
             </tbody>
         </table>
+
+        <p>&nbsp;</p>
+
+        <p class="centre">Copyright © 2012 <a href="https://github.com/Yurienu/FacebookStats">Facebook Stats</a></p>
     </body>
 </html>
