@@ -95,7 +95,14 @@ a:active {
 }
 
 #content {
+  margin: 20px auto;
+  width: 600px;
   padding: 10px;
+}
+
+#content p {
+  text-align: justify;
+  padding-bottom: 5px;
 }
 
 footer p {
