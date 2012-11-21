@@ -56,13 +56,16 @@ $sexPercent = array('male' => 0, 'female' => 0);
       {
         ++$i;
 
+        # Remove yourself from total of friends (or you won’t be able to have 100%)
+        $profile->friend_count -= 1;
+
         $percentMutual = (intval($profile->friend_count) != 0) ? round(($profile->mutual_friend_count / $profile->friend_count) * 100, 2) : 0;
 
         echo '<tr'.(($percentMutual > 15) ? ' style="background-color: #FFFAAA;"' : '').'>
           <td>'.$i.'</td>
           <td><a href="'.$profile->profile_url.'"><img src="'.$profile->pic_square.'" alt="" /></a></td>
           <td class="name"><a href="'.$profile->profile_url.'">'.$profile->name.'</a></td>
-          <td><a href="https://www.facebook.com/browse/mutual_friends/?uid='.$profile->uid.'">'.$profile->mutual_friend_count.' / '.((intval($profile->friend_count) != 0) ? $profile->friend_count.'</a><br />('.$percentMutual.'%)' : '—</a>').'</td>
+          <td><a href="https://www.facebook.com/browse/mutual_friends/?uid='.$profile->uid.'">'.$profile->mutual_friend_count.' / '.((intval($profile->friend_count) > 0) ? $profile->friend_count.'</a><br />('.$percentMutual.'%)' : '—</a>').'</td>
           <td>'.((intval($profile->wall_count) != 0) ? $profile->wall_count : '—').'</td>
         </tr>';
 
