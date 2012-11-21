@@ -62,7 +62,7 @@ $sexPercent = array('male' => 0, 'female' => 0);
           <td>'.$i.'</td>
           <td><a href="'.$profile->profile_url.'"><img src="'.$profile->pic_square.'" alt="" /></a></td>
           <td class="name"><a href="'.$profile->profile_url.'">'.$profile->name.'</a></td>
-          <td>'.$profile->mutual_friend_count.' / '.((intval($profile->friend_count) != 0) ? $profile->friend_count.'<br />('.$percentMutual.'%)' : '—').'</td>
+          <td><a href="https://www.facebook.com/browse/mutual_friends/?uid='.$profile->uid.'">'.$profile->mutual_friend_count.' / '.((intval($profile->friend_count) != 0) ? $profile->friend_count.'</a><br />('.$percentMutual.'%)' : '—</a>').'</td>
           <td>'.((intval($profile->wall_count) != 0) ? $profile->wall_count : '—').'</td>
         </tr>';
 
